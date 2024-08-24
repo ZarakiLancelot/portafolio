@@ -26,6 +26,7 @@ import {
   FaJava,
   FaGitAlt,
   FaRegFilePdf,
+  FaFigma,
 } from "react-icons/fa";
 import {
   SiMongodb,
@@ -140,9 +141,10 @@ export default function Component() {
 
   const skillLevels = {
     basico: {
-      description: "Conozco los conceptos fundamentales, he realizado proyectos simples y estoy aprendiendo de algunas de estas tecnologías.",
+      description: "Conozco los conceptos fundamentales, he realizado proyectos simples, configuraciones sencillas y en algunos casos, aprendiendo de algunas de estas tecnologías.",
       skills: [
         { name: "AWS", icon: <FaAws className="text-2xl" /> },
+        { name: "Figma", icon: <FaFigma className="text-2xl" /> },
         { name: "Grafana", icon: <SiGrafana className="text-2xl" /> },
         { name: "Kotlin", icon: <SiKotlin className="text-2xl" /> },
         { name: "Visual Basic", icon: <SiVisualbasic className="text-2xl" /> },
@@ -175,12 +177,12 @@ export default function Component() {
         { name: "Tomcat", icon: <SiApachetomcat className="text-2xl" /> },
         { name: "Netbeans", icon: <SiApachenetbeanside className="text-2xl" /> },
         { name: "Nginx", icon: <DiNginx className="text-2xl" /> },
+        { name: "Magento", icon: <SiMagento className="text-2xl" /> },
       ]
     },
     intermedio: {
       description: "Tengo experiencia y puedo trabajar de forma independiente en proyectos de mediana complejidad y un poco más. Así como ser capaz de enseñar a otros.",
       skills: [
-        { name: "Ruby on Rails", icon: <SiRubyonrails className="text-2xl" /> },
         { name: "Java", icon: <FaJava className="text-2xl" /> },
         { name: "Spring", icon: <SiSpring className="text-2xl" /> },
         { name: "JavaScript", icon: <FaJs className="text-2xl" /> },
@@ -209,7 +211,6 @@ export default function Component() {
         { name: "Bitbucket", icon: <SiBitbucket className="text-2xl" /> },
         { name: "IntelliJ IDEA", icon: <SiIntellijidea className="text-2xl" /> },
         { name: "RubyMine", icon: <SiRubymine className="text-2xl" /> },
-        { name: "Magento", icon: <SiMagento className="text-2xl" /> },
         { name: "GNU Bash", icon: <SiGnubash className="text-2xl" /> },
       ]
     },
@@ -217,6 +218,7 @@ export default function Component() {
       description: "Tengo mucha experiencia y conocimiento de la tecnología, puedo resolver problemas complejos y soy capaz de enseñar a otros.",
       skills: [
         { name: "Ruby", icon: <SiRuby className="text-2xl" /> },
+        { name: "Ruby on Rails", icon: <SiRubyonrails className="text-2xl" /> },
         { name: "HTML", icon: <FaHtml5 className="text-2xl" /> },
         { name: "JasperReports", icon: <FaRegFilePdf className="text-2xl" /> },
         {
@@ -319,6 +321,7 @@ export default function Component() {
       Tomcat: SiApachetomcat,
       Netbeans: SiApachenetbeanside,
       Nginx: DiNginx,
+      Figma: FaFigma,
     };
     const IconComponent = iconMap[tech] || FaDatabase;
     return <IconComponent className="text-2xl mr-2" />;
@@ -343,6 +346,8 @@ export default function Component() {
         "Creación de reportes con JasperReports",
         "Desarrollo de aplicación móvil para proveer de asistencia médica a los usuarios mediante geolocalización y sensor de movimiento",
         "Desarrollo de sistemas a la medida en diferentes tecnologías",
+        "Desarrollo de Sistema de tickets para proveer soporte en tiempo real, mejorando la respuesta en la resolución de estos en un 65%",
+        "Generación de prototipos, mockups, y wireframes en Figma"
       ],
       technologies: [
         "Ruby on Rails",
@@ -372,6 +377,7 @@ export default function Component() {
         "Firebase",
         "AWS",
         "Netlify",
+        "Figma",
       ],
     },
     {
