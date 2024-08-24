@@ -232,6 +232,57 @@ export default function Component() {
     },
   };
 
+  const projects = [
+    {
+      name: "Spectrum FEL",
+      description: "Portal administrativo para los documentos tributarios de la corporación, así como el envío de correos individualmente y de forma masiva.",
+      placeholder: "/assets/img/spectrum.gif",
+      url: "https://spectrum.feel.com.gt/",
+      code: "",
+      technologies: "Ruby on Rails, HTML, CSS, JavaScript"
+    },
+    {
+      name: "FigueVel",
+      description: "Sitio web estático para restaurante y/o cafetería.",
+      placeholder: "/assets/vids/figuevel.webm",
+      url: "https://figuevel.netlify.app/",
+      code: "https://github.com/ZarakiLancelot/figuevel",
+      technologies: "HTML, CSS, JavaScript, Netlify"
+    },
+    {
+      name: "Popochos",
+      description: "Sitio web estático para emprendimiento de Repostería.",
+      placeholder: "/assets/vids/popochos.webm",
+      url: "https://popochos.shop",
+      code: "https://github.com/ZarakiLancelot/popochos",
+      technologies: "HTML, CSS, JavaScript"
+    },
+    {
+      name: "Blog - DevChapin",
+      description: "Blog personal para compartir conocimiento sobre diferentes tecnologías, pero principalmente de Ruby.",
+      placeholder: "/assets/vids/devchapin.webm",
+      url: "https://developer-chapin.com",
+      code: "https://github.com/ZarakiLancelot/blog",
+      technologies: "Ruby, HTML, CSS, JavaScript, Bridgetown"
+    },
+    {
+      name: "Blog de Café",
+      description: "Sitio web estático sobre un Blog de Café.",
+      placeholder: "/assets/vids/blogcafe.webm",
+      url: "https://blog-cafe-einsen.netlify.app/",
+      code: "",
+      technologies: "HTML, CSS, JavaScript"
+    },
+    {
+      name: "Bienes Raíces",
+      description: "Sitio web estático para venta y compra de Bienes Raíces.",
+      placeholder: "/assets/vids/bienesraices.webm",
+      url: "https://bienes-raices-einsen.netlify.app/",
+      code: "https://github.com/ZarakiLancelot/bienes-raices-einsen",
+      technologies: "HTML, CSS, JavaScript"
+    }
+  ]
+
   const softSkills = [
     {
       name: "Trabajo en equipo",
@@ -777,27 +828,42 @@ export default function Component() {
         <section id="proyectos" className="mb-16 scroll-mt-16 pt-16 -mt-16">
           <h2 className="text-3xl font-bold mb-4">Proyectos</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[1, 2, 3].map((project) => (
-              <div key={project} className="border rounded-lg overflow-hidden">
-                <img
-                  src={`/placeholder.svg?height=200&width=400`}
-                  alt={`Proyecto ${project}`}
-                  className="w-full h-48 object-cover"
-                />
+            {projects.map((project) => (
+              <div key={project.name} className="border rounded-lg overflow-hidden">
+                {project.placeholder.endsWith('.webm') || project.placeholder.endsWith('.mp4') ? (
+                  <video
+                    src={`${project.placeholder}`}
+                    alt={`Proyecto ${project.name}`}
+                    className="w-full h-48 object-cover"
+                    autoPlay
+                    loop
+                    muted
+                  />
+                ) : (
+                  <img
+                    src={`${project.placeholder}`}
+                    alt={`Proyecto ${project.name}`}
+                    className="w-full h-48 object-cover"
+                  />
+                )}
                 <div className="p-4">
                   <h3 className="text-xl font-semibold mb-2">
-                    Nombre del Proyecto {project}
+                    Proyecto: {project.name}
                   </h3>
                   <p className="text-muted-foreground mb-4">
-                    Breve descripción del proyecto y las tecnologías utilizadas.
+                    {project.description}
                   </p>
                   <div className="flex space-x-2">
-                    <Button variant="outline" size="sm">
-                      Ver demo
-                    </Button>
-                    <Button variant="outline" size="sm">
-                      Ver código
-                    </Button>
+                    {project.code && (
+                      <Button variant="outline" size="sm" onClick={() => window.open(project.code)}>
+                        Ver código
+                      </Button>
+                    )}
+                    {project.url && (
+                      <Button variant="outline" size="sm" onClick={() => window.open(project.url)}>
+                        Ver proyecto
+                      </Button>
+                    )}
                   </div>
                 </div>
               </div>
