@@ -10,7 +10,11 @@ import {
   FaAngular,
   FaNodeJs,
   FaDatabase,
+  FaSass,
+  FaDocker,
+  FaAws,
 } from "react-icons/fa";
+import { SiMongodb, SiExpress, SiWebpack, SiTypescript } from "react-icons/si";
 
 export default function Component() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -33,6 +37,29 @@ export default function Component() {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+
+  const getTechIcon = (tech) => {
+    const iconMap = {
+      HTML: FaHtml5,
+      CSS: FaCss3Alt,
+      JavaScript: FaJs,
+      React: FaReact,
+      "Vue.js": FaVuejs,
+      Angular: FaAngular,
+      "Node.js": FaNodeJs,
+      MongoDB: SiMongodb,
+      Express: SiExpress,
+      Sass: FaSass,
+      Webpack: SiWebpack,
+      TypeScript: SiTypescript,
+      Docker: FaDocker,
+      AWS: FaAws,
+    };
+    const IconComponent = iconMap[tech] || FaDatabase;
+    return <IconComponent className="text-2xl mr-2" />;
+  };
+
   const menuItems = [
     { href: "#sobre-mi", title: "Sobre mí" },
     { href: "#experiencia", title: "Experiencia" },
@@ -42,23 +69,49 @@ export default function Component() {
 
   const experiences = [
     {
-      company: "Empresa A",
+      company: "PAKAI Consultores",
       position: "Desarrollador Full Stack",
-      period: "Enero 2020 - Presente",
+      period: "Noviembre 2023 - Agosto 2024",
       responsibilities: [
-        "Desarrollo de aplicaciones web usando React y Node.js",
-        "Implementación de APIs RESTful",
-        "Optimización de rendimiento de bases de datos",
+        "Desarrollo de nuevas funcionalidades para un sistema de seguros de gastos médicos",
+        "Microservicios con SpringBoot para generación de pólizas, exclusión de riesgos, y creación de cotizaciones",
+        "Creación de reportes con JasperReports para pólizas y endosos",
+        "Desarrollo de nuevas funcionalidades para sistemas legacy (AngularJS) donde se realizaban autorizaciones para medicamentos y laboratorios de los asegurados a través de una API de terceros",
+        "Creación y modificación de procesos automatizados (RPA) con UIPath",
+      ],
+      technologies: [
+        "Java",
+        "Spring Boot",
+        "JasperReports",
+        "AngularJS",
+        "UIPath",
+        "Angular",
+        "SonarQube",
+        "Git",
+        "Docker",
+        "Grafana",
       ],
     },
     {
-      company: "Empresa B",
-      position: "Desarrollador Front-end",
-      period: "Junio 2018 - Diciembre 2019",
+      company: "EMPAGUA",
+      position: "Desarrollador Full Stack",
+      period: "Julio 2023 - Diciembre 2023",
       responsibilities: [
-        "Creación de interfaces de usuario responsivas",
-        "Integración de APIs de terceros",
-        "Mejora de la accesibilidad web",
+        "Desarrollo de un módulo para el pago del servicio de agua para los residentes de la ciudad de Guatemala, a través de un quiosco de la Municipalidad",
+        "Desarrollo de una aplicación lowcode con Oracle APEX para la administración de herramientas e inventario en las bodegas de la empresa",
+        "Creación de una aplicación con Oracle APEX para",
+      ],
+      technologies: [
+        "Java",
+        "Spring Boot",
+        "JasperReports",
+        "AngularJS",
+        "UIPath",
+        "Angular",
+        "SonarQube",
+        "Git",
+        "Docker",
+        "Grafana",
       ],
     },
     {
@@ -69,6 +122,18 @@ export default function Component() {
         "Asistencia en el desarrollo de componentes de UI",
         "Pruebas de unidad y de integración",
         "Documentación de código y procesos",
+      ],
+      technologies: [
+        "Java",
+        "Spring Boot",
+        "JasperReports",
+        "AngularJS",
+        "UIPath",
+        "Angular",
+        "SonarQube",
+        "Git",
+        "Docker",
+        "Grafana",
       ],
     },
   ];
@@ -163,7 +228,6 @@ export default function Component() {
         <section id="experiencia" className="mb-16">
           <h2 className="text-3xl font-bold mb-8 text-center">Experiencia</h2>
           <div className="relative">
-            {/* Línea central del timeline */}
             <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-primary"></div>
 
             {experiences.map((exp, index) => (
@@ -172,6 +236,8 @@ export default function Component() {
                 className={`mb-8 flex justify-between items-center w-full ${
                   index % 2 === 0 ? "flex-row-reverse" : "flex-row"
                 }`}
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
               >
                 <div className="order-1 w-5/12"></div>
                 <div className="z-20 flex items-center order-1 bg-primary shadow-xl w-8 h-8 rounded-full">
@@ -179,19 +245,45 @@ export default function Component() {
                     {index + 1}
                   </h1>
                 </div>
-                <div className="order-1 bg-card rounded-lg shadow-xl w-5/12 px-6 py-4">
-                  <h3 className="font-bold text-primary text-xl mb-1">
-                    {exp.company}
-                  </h3>
-                  <h4 className="font-semibold text-lg mb-1">{exp.position}</h4>
-                  <p className="text-sm text-muted-foreground mb-2">
-                    {exp.period}
-                  </p>
-                  <ul className="list-disc list-inside text-sm text-muted-foreground">
-                    {exp.responsibilities.map((resp, idx) => (
-                      <li key={idx}>{resp}</li>
-                    ))}
-                  </ul>
+                <div className="order-1 bg-card rounded-lg shadow-xl w-5/12 px-6 py-4 relative perspective">
+                  <div
+                    className={`relative transition-transform duration-500 transform-style-preserve-3d ${
+                      hoveredIndex === index ? "rotate-y-180" : ""
+                    }`}
+                  >
+                    <div className="backface-hidden">
+                      <h3 className="font-bold text-primary text-xl mb-1">
+                        {exp.company}
+                      </h3>
+                      <h4 className="font-semibold text-lg mb-1">
+                        {exp.position}
+                      </h4>
+                      <p className="text-sm text-muted-foreground mb-2">
+                        {exp.period}
+                      </p>
+                      <ul className="list-disc list-inside text-sm text-muted-foreground">
+                        {exp.responsibilities.map((resp, idx) => (
+                          <li key={idx}>{resp}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="absolute inset-0 backface-hidden rotate-y-180 bg-card rounded-lg shadow-xl px-6 py-4 overflow-y-auto">
+                      <h3 className="font-bold text-primary text-xl mb-4">
+                        Tecnologías utilizadas
+                      </h3>
+                      <div className="grid grid-cols-2 gap-4">
+                        {exp.technologies.map((tech, idx) => (
+                          <div
+                            key={idx}
+                            className="flex items-center space-x-2 p-2 border rounded-lg"
+                          >
+                            {getTechIcon(tech)}
+                            <span>{tech}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             ))}
@@ -294,8 +386,8 @@ export default function Component() {
             </a>
           </div>
           <p className="mt-4 text-center text-muted-foreground">
-            © {new Date().getFullYear()} Edwin Einsen Vásquez Velásquez. Todos los derechos
-            reservados.
+            © {new Date().getFullYear()} Edwin Einsen Vásquez Velásquez. Todos
+            los derechos reservados.
           </p>
         </div>
       </footer>
