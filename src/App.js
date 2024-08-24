@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Github, Linkedin, Twitter, Moon, Sun } from "lucide-react";
+import { Menu, X, Github, Linkedin, Twitter, Moon, Sun, Mail, Phone } from "lucide-react";
 import { Button } from "./components/ui/button";
 import {
   FaHtml5,
@@ -13,17 +13,38 @@ import {
   FaSass,
   FaDocker,
   FaAws,
+  FaJava,
+  FaGitAlt,
 } from "react-icons/fa";
-import { SiMongodb, SiExpress, SiWebpack, SiTypescript } from "react-icons/si";
+import {
+  SiMongodb,
+  SiExpress,
+  SiWebpack,
+  SiTypescript,
+  SiSpring,
+} from "react-icons/si";
 
 export default function Component() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [theme, setTheme] = useState("light");
+  const [yearsOfExperience, setYearsOfExperience] = useState(0);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme") || "light";
     setTheme(savedTheme);
     document.documentElement.classList.toggle("dark", savedTheme === "dark");
+
+    const startDate = new Date(2017, 9, 1); // Octubre 1, 2017
+    const currentDate = new Date();
+    const yearsDiff = currentDate.getFullYear() - startDate.getFullYear();
+    const monthsDiff = currentDate.getMonth() - startDate.getMonth();
+    const totalYears = yearsDiff + monthsDiff / 12;
+    setYearsOfExperience(Math.floor(totalYears));
   }, []);
 
   const toggleTheme = () => {
@@ -38,6 +59,35 @@ export default function Component() {
   };
 
   const [hoveredIndex, setHoveredIndex] = useState(null);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Aquí iría la lógica para enviar el formulario
+    console.log('Formulario enviado:', formData);
+    // Resetear el formulario después del envío
+    setFormData({ name: '', email: '', message: '' });
+  };
+
+  const skills = [
+    { name: "HTML", icon: <FaHtml5 className="text-2xl" /> },
+    { name: "CSS", icon: <FaCss3Alt className="text-2xl" /> },
+    { name: "JavaScript", icon: <FaJs className="text-2xl" /> },
+    { name: "React", icon: <FaReact className="text-2xl" /> },
+    { name: "Vue", icon: <FaVuejs className="text-2xl" /> },
+    { name: "Angular", icon: <FaAngular className="text-2xl" /> },
+    { name: "Node.js", icon: <FaNodeJs className="text-2xl" /> },
+    { name: "Bases de datos", icon: <FaDatabase className="text-2xl" /> },
+    { name: "Docker", icon: <FaDocker className="text-2xl" /> },
+    { name: "Git", icon: <FaGitAlt className="text-2xl" /> },
+  ];
 
   const getTechIcon = (tech) => {
     const iconMap = {
@@ -55,6 +105,9 @@ export default function Component() {
       TypeScript: SiTypescript,
       Docker: FaDocker,
       AWS: FaAws,
+      Java: FaJava,
+      Spring: SiSpring,
+      Git: FaGitAlt,
     };
     const IconComponent = iconMap[tech] || FaDatabase;
     return <IconComponent className="text-2xl mr-2" />;
@@ -65,9 +118,50 @@ export default function Component() {
     { href: "#experiencia", title: "Experiencia" },
     { href: "#habilidades", title: "Habilidades" },
     { href: "#proyectos", title: "Proyectos" },
+    { href: "#contacto", title: "Contacto" },
   ];
 
   const experiences = [
+    {
+      company: "Freelance",
+      position: "Desarrollador Full Stack",
+      period: "Octubre 2018 - Presente",
+      responsibilities: [
+        "Desarrollo e implementación de API para factura electrónica FEL",
+        "Diseño y desarrollo de serivicos web y RESTful APIs con .NET Framework",
+        "Creación de reportes con JasperReports",
+        "Desarrollo de aplicación móvil para proveer de asistencia médica a los usuarios mediante geolocalización y sensor de movimiento",
+        "Desarrollo de sistemas a la medida en diferentes tecnologías",
+      ],
+      technologies: [
+        "Rails",
+        "Laravel",
+        "Java",
+        "Spring",
+        "JasperReports",
+        "API Rest",
+        "Docker",
+        "Git",
+        "GitLab",
+        "Angular",
+        "React.js",
+        "JavaScript",
+        "Oracle",
+        "MySQL",
+        "SQL",
+        "Jira",
+        "Trello",
+        "Kotlin",
+        "Android",
+        "Python",
+        "Flask",
+        "PostgreSQL",
+        "MongoDB",
+        "Firebase",
+        "AWS",
+        "FastAPI"
+      ],
+    },
     {
       company: "PAKAI Consultores",
       position: "Desarrollador Full Stack",
@@ -81,15 +175,23 @@ export default function Component() {
       ],
       technologies: [
         "Java",
-        "Spring Boot",
+        "Spring",
         "JasperReports",
-        "AngularJS",
-        "UIPath",
-        "Angular",
-        "SonarQube",
-        "Git",
+        "API Rest",
         "Docker",
+        "Git",
+        "GitLab",
+        "Angular",
+        "AngularJS",
+        "JavaScript",
+        "UIPath",
+        "SonarQube",
         "Grafana",
+        "MariaDB",
+        "Oracle",
+        "MySQL",
+        "SQL",
+        "Jira",
       ],
     },
     {
@@ -102,51 +204,160 @@ export default function Component() {
         "Creación de una aplicación con Oracle APEX para",
       ],
       technologies: [
-        "Java",
-        "Spring Boot",
+        "Oracle APEX",
         "JasperReports",
-        "AngularJS",
-        "UIPath",
-        "Angular",
-        "SonarQube",
+        "PHP",
+        "Laravel",
+        "Rails",
+        "JavaScript",
         "Git",
+        "GitHub",
         "Docker",
-        "Grafana",
+        "HTML",
+        "CSS",
+        "Oracle",
+        "SQL",
       ],
     },
     {
-      company: "Empresa C",
-      position: "Pasante de Desarrollo",
-      period: "Enero 2018 - Mayo 2018",
+      company: "Silicon Development",
+      position: "Desarrollador Ruby on Rails",
+      period: "Julio 2022 - Junio 2023",
       responsibilities: [
-        "Asistencia en el desarrollo de componentes de UI",
-        "Pruebas de unidad y de integración",
+        "Creación de nuevos endpoints para la API de inversiones interna, así como nuevas funcionalidades en el sistema multitenant",
+        "Integración con APIs de terceros (i.e. Docusign), para expandir las capacidades del sistema a la vez que se aseguraba la comunicación con servicios externos",
+        "Asistencia en el proceso de migración, contribuyendo en la transición de Rails 5 a Rails 7, y de Ruby 2 a Ruby 3",
+        "Desarrollo con orientación a TDD, contribuyendo a una cultura de calidad y seguridad a través de todo el ciclo de desarrollo",
         "Documentación de código y procesos",
       ],
       technologies: [
-        "Java",
-        "Spring Boot",
-        "JasperReports",
-        "AngularJS",
-        "UIPath",
-        "Angular",
-        "SonarQube",
+        "Rails",
+        "ReactJS",
+        "JavaScript",
+        "API Rest",
         "Git",
         "Docker",
-        "Grafana",
+        "Heroku",
+        "AWS",
+        "Redis",
+        "PostgreSQL",
+        "Scrum",
+        "CircleCI",
+        "Github",
+        "Jira",
       ],
     },
-  ];
-
-  const skills = [
-    { name: "HTML", icon: <FaHtml5 className="text-2xl" /> },
-    { name: "CSS", icon: <FaCss3Alt className="text-2xl" /> },
-    { name: "JavaScript", icon: <FaJs className="text-2xl" /> },
-    { name: "React", icon: <FaReact className="text-2xl" /> },
-    { name: "Vue", icon: <FaVuejs className="text-2xl" /> },
-    { name: "Angular", icon: <FaAngular className="text-2xl" /> },
-    { name: "Node.js", icon: <FaNodeJs className="text-2xl" /> },
-    { name: "Bases de datos", icon: <FaDatabase className="text-2xl" /> },
+    {
+      company: "TektonLabs",
+      position: "Desarrollador Full Stack",
+      period: "Agosto 2022 - Diciembre 2022",
+      responsibilities: [
+        "Desarrollo e implementación con éxito de un sistema de reservas sólido y robusto para programar citas o eventos con celebridades y oradores de diferentes ámbitos, a través de interfaces fáciles de utilizar y procesos optimizados para una excelente experiencia",
+        "Diseño e implementación de un sistema de búsqueda con múltiples filtros en el sitio web principal, mejorando la navegación y brindando experiencia personalizada",
+        "Se crearon y lanzaron sitios web secundarios individuales para diferentes categorías y clientes, optimizando la participación del usuario para adaptar el contenido y funcionalidades a los intereses específicos de sus audiencias",
+        "Desarrollo con orientación a TDD, contribuyendo a una cultura de calidad y seguridad a través de todo el ciclo de desarrollo",
+        "Creación de sección administrativa para todos los sitios web, esta sección mejoró la usabilidad y control general del sistema",
+        "Documentación de código y procesos",
+      ],
+      technologies: [
+        "Rails",
+        "JavaScript",
+        "Git",
+        "Github",
+        "Docker",
+        "AWS",
+        "Redis",
+        "PostgreSQL",
+        "Scrum",
+        "Jira",
+      ],
+    },
+    {
+      company: "Agropecuaria Popoyán",
+      position: "Desarrollador y Consultor de Software",
+      period: "Mayo 2022 - Septiembre 2022",
+      responsibilities: [
+        "Implementación del módulo de Private Shops dentro de Magento para tener tiendas privadas con productos génericos",
+        "Investigación de integración de módulos de terceros para las tiendas B2B y B2C, facilitando la integración de diferentes productos dentro de los dos tipos de tiendas",
+      ],
+      technologies: [
+        "Magento",
+        "PHP",
+        "JavaScript",
+        "API Rest",
+        "Git",
+        "GitHub",
+        "Docker",
+        "Nginx",
+        "Elasticsearch",
+        "MySQL",
+        "Scrum",
+        "Jira",
+      ],
+    },
+    {
+      company: "PDC Latinoamerica",
+      position: "Desarrollador y Consultor de Aplicaciones",
+      period: "Mayo 2020 - Enero 2022",
+      responsibilities: [
+        "Desarollo de un módulo de reservas (espacios administrativos, oficinas, salas, parqueos, citas), optimizando el uso y administración de los recursos",
+        "Desarrollo de mejoras en el módulo de vacaciones, contribuyendo a la optimización de procesos y un mejor seguimiento de los días de licencias de los empleados",
+        "Implementación de mejoras en el módulo de datos demográficos, lo que mejoró la precisión y relevancia de los datos organizacionales para la toma de decisiones estratégicas",
+        "Desarrollo de interfaz gráfica para la visualización de módulo del sistema ERP",
+        "Diseño e implementación de un sistema de encuestas de satisfacción y fidelidad para clientes, lo que proporcionó información valiosa para las estrategias de la empresa",
+        "Soporte sobre procesos en el sistema ERP"
+      ],
+      technologies: [
+        "Rails",
+        "Python",
+        "JavaScript",
+        "TypeScript",
+        "Git",
+        "GitHub",
+        "Node.js",
+        "Angular",
+        "Oracle",
+        "Redis",
+        "HTML",
+        "CSS",
+      ],
+    },
+    {
+      company: "INFILE",
+      position: "Desarrollador Web | Jefe de Implementación | Implementador y Soporte Técnico",
+      period: "Diciembre 2012 - Abril 2020",
+      responsibilities: [
+        "Desarollo de un pequeño ecosistema de facturación electrónica FEL para BAC Credomatic (API, Portal Web, Aplicación lectora de archivos, Colas, Envío de Correos) utilizando Docker para procesar archivos, convertir archivos, consumir API, almacenar en base de datos y envío de correos electrónicos de forma individual y masiva",
+        "Interfaz de factura electrónica FEL para inmobiliaria Spectrum",
+        "Mejoras y actualizaciones en el CRM corporativo para FEL y conecciones a SAP",
+        "Desarrollo y modificación de bibliotecas (DLL) para reutilización de código en diferentes proyectos",
+        "Desarrollo de aplicación de escritorio para consumir servicios SOAP, obteniendo información de los contribuyentes y almacenándolos en una base de datos, proceso que se ejecutaba periódicamente a través de un cronjob",
+        "A cargo de la coordinación de el equipo de implementaciones y soporte técnico para ayudar a los clientes en el uso de los sistemas para la facturación electrónica",
+        "Soporte en diferentes tecnologías y lenguajes para clientes en implementación de factura electrónica"
+      ],
+      technologies: [
+        "Java",
+        "PHP",
+        "Rails",
+        "Python",
+        "JavaScript",
+        "TypeScript",
+        "C#",
+        "Angular",
+        "Node.js",
+        "Git",
+        "GitHub",
+        "Redis",
+        "HTML",
+        "CSS",
+        "Docker",
+        "Oracle",
+        "MySQL",
+        "SQLServer",
+        "VB6",
+        "Visual Fox",
+      ],
+    },
   ];
 
   return (
@@ -219,9 +430,19 @@ export default function Component() {
       <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <section id="sobre-mi" className="mb-16">
           <h2 className="text-3xl font-bold mb-4">Sobre mí</h2>
+          <p className="text-muted-foreground mb-4">
+            Desarrollador de software con {yearsOfExperience} años de
+            experiencia, con la actitud adecuada para adquirir las habilidades
+            necesarias para mejorar constantemente. Hambriento de conocimiento
+            continuo, siempre ansioso por aprender y mejorar. Experiencia con
+            diferentes stacks tanto en front-end como en back-end.
+          </p>
           <p className="text-muted-foreground">
-            Aquí puedes escribir una breve introducción sobre ti, tu experiencia
-            y tus objetivos profesionales.
+            Mi pasión por la tecnología y mi compromiso con la excelencia me
+            impulsan a mantenerme actualizado con las últimas tendencias y
+            mejores prácticas en el desarrollo de software. Siempre estoy
+            buscando nuevos desafíos que me permitan crecer profesionalmente y
+            contribuir de manera significativa a proyectos innovadores.
           </p>
         </section>
 
@@ -350,6 +571,79 @@ export default function Component() {
                 </div>
               </div>
             ))}
+          </div>
+        </section>
+
+        <section id="contacto" className="mb-16">
+          <h2 className="text-3xl font-bold mb-8 text-center">Contacto</h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 className="text-xl font-semibold mb-4">Envíame un mensaje</h3>
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-muted-foreground mb-1">
+                    Nombre
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-muted-foreground mb-1">
+                    Correo electrónico
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-muted-foreground mb-1">
+                    Mensaje
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    required
+                    rows="4"
+                    className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                  ></textarea>
+                </div>
+                <Button type="submit" className="w-full">
+                  Enviar mensaje
+                </Button>
+              </form>
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold mb-4">Información de contacto</h3>
+              <div className="space-y-4">
+                <div className="flex items-center space-x-2">
+                  <Mail className="text-primary" />
+                  <a href="mailto:einsen.vasquez.velasquez@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
+                    einsen.vasquez.velasquez@gmail.com
+                  </a>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Phone className="text-primary" />
+                  <a href="tel:+50255353148" className="text-muted-foreground hover:text-primary transition-colors">
+                    +502 5535-3148
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
       </main>
