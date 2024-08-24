@@ -1,5 +1,15 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Github, Linkedin, Twitter, Moon, Sun, Mail, Phone } from "lucide-react";
+import {
+  Menu,
+  X,
+  Github,
+  Linkedin,
+  Twitter,
+  Moon,
+  Sun,
+  Mail,
+  Phone,
+} from "lucide-react";
 import { Button } from "./components/ui/button";
 import {
   FaHtml5,
@@ -15,6 +25,7 @@ import {
   FaAws,
   FaJava,
   FaGitAlt,
+  FaRegFilePdf,
 } from "react-icons/fa";
 import {
   SiMongodb,
@@ -22,16 +33,67 @@ import {
   SiWebpack,
   SiTypescript,
   SiSpring,
+  SiPostgresql,
+  SiHeroku,
+  SiNetlify,
+  SiRuby,
+  SiRubyonrails,
+  SiPython,
+  SiNewrelic,
+  SiMysql,
+  SiOracle,
+  SiLaravel,
+  SiSonarqube,
+  SiKotlin,
+  SiPhp,
+  SiVisualbasic,
+  SiVisualstudio,
+  SiVisualstudiocode,
+  SiRubymine,
+  SiEclipseide,
+  SiIntellijidea,
+  SiGithub,
+  SiGitlab,
+  SiBitbucket,
+  SiCircleci,
+  SiJira,
+  SiTrello,
+  SiElasticsearch,
+  SiMagento,
+  SiRedis,
+  SiGnubash,
+  SiFlask,
+  SiFastapi,
+  SiDjango,
+  SiFirebase,
+  SiJest,
+  SiMicrosoftsqlserver,
+  SiSqlite,
+  SiMariadb,
+  SiPostman,
+  SiGrafana,
+  SiUipath,
+  SiRabbitmq,
+  SiSelenium,
+  SiApachekafka,
+  SiApachetomcat,
+  SiApachenetbeanside,
 } from "react-icons/si";
+import { RiAngularjsFill } from "react-icons/ri";
+import { GiFox, GiGears } from "react-icons/gi";
+import { DiScrum, DiAndroid, DiNginx } from "react-icons/di";
+import { TbSql } from "react-icons/tb";
+import { BiBrain, BiConversation } from "react-icons/bi";
+import { MdOutlineGroupWork, MdOutlineAccountTree } from "react-icons/md";
 
 export default function Component() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [theme, setTheme] = useState("light");
   const [yearsOfExperience, setYearsOfExperience] = useState(0);
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
+    name: "",
+    email: "",
+    message: "",
   });
 
   useEffect(() => {
@@ -62,31 +124,127 @@ export default function Component() {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prevState => ({
+    setFormData((prevState) => ({
       ...prevState,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // Aquí iría la lógica para enviar el formulario
-    console.log('Formulario enviado:', formData);
+    console.log("Formulario enviado:", formData);
     // Resetear el formulario después del envío
-    setFormData({ name: '', email: '', message: '' });
+    setFormData({ name: "", email: "", message: "" });
   };
 
-  const skills = [
-    { name: "HTML", icon: <FaHtml5 className="text-2xl" /> },
-    { name: "CSS", icon: <FaCss3Alt className="text-2xl" /> },
-    { name: "JavaScript", icon: <FaJs className="text-2xl" /> },
-    { name: "React", icon: <FaReact className="text-2xl" /> },
-    { name: "Vue", icon: <FaVuejs className="text-2xl" /> },
-    { name: "Angular", icon: <FaAngular className="text-2xl" /> },
-    { name: "Node.js", icon: <FaNodeJs className="text-2xl" /> },
-    { name: "Bases de datos", icon: <FaDatabase className="text-2xl" /> },
-    { name: "Docker", icon: <FaDocker className="text-2xl" /> },
-    { name: "Git", icon: <FaGitAlt className="text-2xl" /> },
+  const skillLevels = {
+    basico: {
+      description: "Conozco los conceptos fundamentales, he realizado proyectos simples y estoy aprendiendo de algunas de estas tecnologías.",
+      skills: [
+        { name: "AWS", icon: <FaAws className="text-2xl" /> },
+        { name: "Grafana", icon: <SiGrafana className="text-2xl" /> },
+        { name: "Kotlin", icon: <SiKotlin className="text-2xl" /> },
+        { name: "Visual Basic", icon: <SiVisualbasic className="text-2xl" /> },
+        { name: "React", icon: <FaReact className="text-2xl" /> },
+        { name: "Vue", icon: <FaVuejs className="text-2xl" /> },
+        { name: "Django", icon: <SiDjango className="text-2xl" /> },
+        { name: "Firebase", icon: <SiFirebase className="text-2xl" /> },
+        { name: "UIpath", icon: <SiUipath className="text-2xl" /> },
+        { name: "RabbitMQ", icon: <SiRabbitmq className="text-2xl" /> },
+        { name: "Selenium", icon: <SiSelenium className="text-2xl" /> },
+        { name: "Kafka", icon: <SiApachekafka className="text-2xl" /> },
+        { name: "Sass", icon: <FaSass className="text-2xl" /> },
+        { name: "Webpack", icon: <SiWebpack className="text-2xl" /> },
+        { name: "Heroku", icon: <SiHeroku className="text-2xl" /> },
+        { name: "Netlify", icon: <SiNetlify className="text-2xl" /> },
+        { name: "New Relic", icon: <SiNewrelic className="text-2xl" /> },
+        { name: "SonarQube", icon: <SiSonarqube className="text-2xl" /> },
+        { name: "Jest", icon: <SiJest className="text-2xl" /> },
+        {
+          name: "SQLServer",
+          icon: <SiMicrosoftsqlserver className="text-2xl" />,
+        },
+        { name: "Visual Studio", icon: <SiVisualstudio className="text-2xl" /> },
+        { name: "Eclipse IDE", icon: <SiEclipseide className="text-2xl" /> },
+        { name: "CircleCI", icon: <SiCircleci className="text-2xl" /> },
+        { name: "Elasticsearch", icon: <SiElasticsearch className="text-2xl" /> },
+        { name: "Redis", icon: <SiRedis className="text-2xl" /> },
+        { name: "AngularJS", icon: <RiAngularjsFill className="text-2xl" /> },
+        { name: "Android", icon: <DiAndroid className="text-2xl" /> },
+        { name: "Tomcat", icon: <SiApachetomcat className="text-2xl" /> },
+        { name: "Netbeans", icon: <SiApachenetbeanside className="text-2xl" /> },
+        { name: "Nginx", icon: <DiNginx className="text-2xl" /> },
+      ]
+    },
+    intermedio: {
+      description: "Tengo experiencia y puedo trabajar de forma independiente en proyectos de mediana complejidad y un poco más. Así como ser capaz de enseñar a otros.",
+      skills: [
+        { name: "Ruby on Rails", icon: <SiRubyonrails className="text-2xl" /> },
+        { name: "Java", icon: <FaJava className="text-2xl" /> },
+        { name: "Spring", icon: <SiSpring className="text-2xl" /> },
+        { name: "JavaScript", icon: <FaJs className="text-2xl" /> },
+        { name: "PHP", icon: <SiPhp className="text-2xl" /> },
+        { name: "Python", icon: <SiPython className="text-2xl" /> },
+        { name: "Flask", icon: <SiFlask className="text-2xl" /> },
+        { name: "FastAPI", icon: <SiFastapi className="text-2xl" /> },
+        { name: "Laravel", icon: <SiLaravel className="text-2xl" /> },
+        { name: "Angular", icon: <FaAngular className="text-2xl" /> },
+        { name: "Node.js", icon: <FaNodeJs className="text-2xl" /> },
+        { name: "Docker", icon: <FaDocker className="text-2xl" /> },
+        { name: "Git", icon: <FaGitAlt className="text-2xl" /> },
+        { name: "MongoDB", icon: <SiMongodb className="text-2xl" /> },
+        { name: "Express", icon: <SiExpress className="text-2xl" /> },  
+        { name: "TypeScript", icon: <SiTypescript className="text-2xl" /> },      
+        { name: "CSS", icon: <FaCss3Alt className="text-2xl" /> },      
+        { name: "PostgreSQL", icon: <SiPostgresql className="text-2xl" /> },     
+        { name: "MySQL", icon: <SiMysql className="text-2xl" /> },
+        { name: "Oracle", icon: <SiOracle className="text-2xl" /> },     
+        { name: "SQLite", icon: <SiSqlite className="text-2xl" /> },
+        { name: "SQL", icon: <TbSql className="text-2xl" /> },
+        { name: "MariaDB", icon: <SiMariadb className="text-2xl" /> },
+        { name: "Postman", icon: <SiPostman className="text-2xl" /> },
+        { name: "GitHub", icon: <SiGithub className="text-2xl" /> },
+        { name: "GitLab", icon: <SiGitlab className="text-2xl" /> },
+        { name: "Bitbucket", icon: <SiBitbucket className="text-2xl" /> },
+        { name: "IntelliJ IDEA", icon: <SiIntellijidea className="text-2xl" /> },
+        { name: "RubyMine", icon: <SiRubymine className="text-2xl" /> },
+        { name: "Magento", icon: <SiMagento className="text-2xl" /> },
+        { name: "GNU Bash", icon: <SiGnubash className="text-2xl" /> },
+      ]
+    },
+    avanzado: {
+      description: "Tengo mucha experiencia y conocimiento de la tecnología, puedo resolver problemas complejos y soy capaz de enseñar a otros.",
+      skills: [
+        { name: "Ruby", icon: <SiRuby className="text-2xl" /> },
+        { name: "HTML", icon: <FaHtml5 className="text-2xl" /> },
+        { name: "JasperReports", icon: <FaRegFilePdf className="text-2xl" /> },
+        {
+          name: "Visual Studio Code",
+          icon: <SiVisualstudiocode className="text-2xl" />,
+        },
+        { name: "Jira", icon: <SiJira className="text-2xl" /> },
+        { name: "Trello", icon: <SiTrello className="text-2xl" /> },
+        { name: "Scrum", icon: <DiScrum className="text-2xl" /> },
+      ]
+    },
+  };
+
+  const softSkills = [
+    {
+      name: "Trabajo en equipo",
+      icon: <MdOutlineGroupWork className="text-2xl" />,
+    },
+    {
+      name: "Comunicación efectiva",
+      icon: <BiConversation className="text-2xl" />,
+    },
+    {
+      name: "Resolución de problemas",
+      icon: <MdOutlineAccountTree className="text-2xl" />,
+    },
+    { name: "Adaptabilidad", icon: <GiGears className="text-2xl" /> },
+    { name: "Aprendizaje continuo", icon: <BiBrain className="text-2xl" /> },
   ];
 
   const getTechIcon = (tech) => {
@@ -98,6 +256,7 @@ export default function Component() {
       "Vue.js": FaVuejs,
       Angular: FaAngular,
       "Node.js": FaNodeJs,
+      Databases: FaDatabase,
       MongoDB: SiMongodb,
       Express: SiExpress,
       Sass: FaSass,
@@ -108,6 +267,58 @@ export default function Component() {
       Java: FaJava,
       Spring: SiSpring,
       Git: FaGitAlt,
+      PostgreSQL: SiPostgresql,
+      Heroku: SiHeroku,
+      Netlify: SiNetlify,
+      Ruby: SiRuby,
+      "Ruby on Rails": SiRubyonrails,
+      Python: SiPython,
+      "New Relic": SiNewrelic,
+      MySQL: SiMysql,
+      Oracle: SiOracle,
+      Laravel: SiLaravel,
+      SonarQube: SiSonarqube,
+      Kotlin: SiKotlin,
+      PHP: SiPhp,
+      "Visual Basic": SiVisualbasic,
+      "Visual Studio": SiVisualstudio,
+      "Visual Studio Code": SiVisualstudiocode,
+      RubyMine: SiRubymine,
+      "Eclipse IDE": SiEclipseide,
+      "IntelliJ IDEA": SiIntellijidea,
+      GitHub: SiGithub,
+      GitLab: SiGitlab,
+      Bitbucket: SiBitbucket,
+      CircleCI: SiCircleci,
+      Jira: SiJira,
+      Trello: SiTrello,
+      Elasticsearch: SiElasticsearch,
+      Magento: SiMagento,
+      Redis: SiRedis,
+      "GNU Bash": SiGnubash,
+      AngularJS: RiAngularjsFill,
+      Scrum: DiScrum,
+      "Visual Fox": GiFox,
+      JasperReports: FaRegFilePdf,
+      Android: DiAndroid,
+      Flask: SiFlask,
+      FastAPI: SiFastapi,
+      Django: SiDjango,
+      Firebase: SiFirebase,
+      Jest: SiJest,
+      SQLServer: SiMicrosoftsqlserver,
+      SQLite: SiSqlite,
+      SQL: TbSql,
+      MariaDB: SiMariadb,
+      Postman: SiPostman,
+      Grafana: SiGrafana,
+      UIpath: SiUipath,
+      RabbitMQ: SiRabbitmq,
+      Selenium: SiSelenium,
+      Kafka: SiApachekafka,
+      Tomcat: SiApachetomcat,
+      Netbeans: SiApachenetbeanside,
+      Nginx: DiNginx,
     };
     const IconComponent = iconMap[tech] || FaDatabase;
     return <IconComponent className="text-2xl mr-2" />;
@@ -134,7 +345,7 @@ export default function Component() {
         "Desarrollo de sistemas a la medida en diferentes tecnologías",
       ],
       technologies: [
-        "Rails",
+        "Ruby on Rails",
         "Laravel",
         "Java",
         "Spring",
@@ -144,7 +355,7 @@ export default function Component() {
         "Git",
         "GitLab",
         "Angular",
-        "React.js",
+        "React",
         "JavaScript",
         "Oracle",
         "MySQL",
@@ -155,11 +366,12 @@ export default function Component() {
         "Android",
         "Python",
         "Flask",
+        "FastAPI",
         "PostgreSQL",
         "MongoDB",
         "Firebase",
         "AWS",
-        "FastAPI"
+        "Netlify",
       ],
     },
     {
@@ -184,7 +396,7 @@ export default function Component() {
         "Angular",
         "AngularJS",
         "JavaScript",
-        "UIPath",
+        "UIpath",
         "SonarQube",
         "Grafana",
         "MariaDB",
@@ -208,7 +420,7 @@ export default function Component() {
         "JasperReports",
         "PHP",
         "Laravel",
-        "Rails",
+        "Ruby on Rails",
         "JavaScript",
         "Git",
         "GitHub",
@@ -231,11 +443,12 @@ export default function Component() {
         "Documentación de código y procesos",
       ],
       technologies: [
-        "Rails",
-        "ReactJS",
+        "Ruby on Rails",
+        "React",
         "JavaScript",
         "API Rest",
         "Git",
+        "GitHub",
         "Docker",
         "Heroku",
         "AWS",
@@ -243,7 +456,6 @@ export default function Component() {
         "PostgreSQL",
         "Scrum",
         "CircleCI",
-        "Github",
         "Jira",
       ],
     },
@@ -260,10 +472,10 @@ export default function Component() {
         "Documentación de código y procesos",
       ],
       technologies: [
-        "Rails",
+        "Ruby on Rails",
         "JavaScript",
         "Git",
-        "Github",
+        "GitHub",
         "Docker",
         "AWS",
         "Redis",
@@ -305,10 +517,10 @@ export default function Component() {
         "Implementación de mejoras en el módulo de datos demográficos, lo que mejoró la precisión y relevancia de los datos organizacionales para la toma de decisiones estratégicas",
         "Desarrollo de interfaz gráfica para la visualización de módulo del sistema ERP",
         "Diseño e implementación de un sistema de encuestas de satisfacción y fidelidad para clientes, lo que proporcionó información valiosa para las estrategias de la empresa",
-        "Soporte sobre procesos en el sistema ERP"
+        "Soporte sobre procesos en el sistema ERP",
       ],
       technologies: [
-        "Rails",
+        "Ruby on Rails",
         "Python",
         "JavaScript",
         "TypeScript",
@@ -324,7 +536,8 @@ export default function Component() {
     },
     {
       company: "INFILE",
-      position: "Desarrollador Web | Jefe de Implementación | Implementador y Soporte Técnico",
+      position:
+        "Desarrollador Web | Jefe de Implementación | Implementador y Soporte Técnico",
       period: "Diciembre 2012 - Abril 2020",
       responsibilities: [
         "Desarollo de un pequeño ecosistema de facturación electrónica FEL para BAC Credomatic (API, Portal Web, Aplicación lectora de archivos, Colas, Envío de Correos) utilizando Docker para procesar archivos, convertir archivos, consumir API, almacenar en base de datos y envío de correos electrónicos de forma individual y masiva",
@@ -333,12 +546,12 @@ export default function Component() {
         "Desarrollo y modificación de bibliotecas (DLL) para reutilización de código en diferentes proyectos",
         "Desarrollo de aplicación de escritorio para consumir servicios SOAP, obteniendo información de los contribuyentes y almacenándolos en una base de datos, proceso que se ejecutaba periódicamente a través de un cronjob",
         "A cargo de la coordinación de el equipo de implementaciones y soporte técnico para ayudar a los clientes en el uso de los sistemas para la facturación electrónica",
-        "Soporte en diferentes tecnologías y lenguajes para clientes en implementación de factura electrónica"
+        "Soporte en diferentes tecnologías y lenguajes para clientes en implementación de factura electrónica",
       ],
       technologies: [
         "Java",
         "PHP",
-        "Rails",
+        "Ruby on Rails",
         "Python",
         "JavaScript",
         "TypeScript",
@@ -354,7 +567,7 @@ export default function Component() {
         "Oracle",
         "MySQL",
         "SQLServer",
-        "VB6",
+        "Visual Basic",
         "Visual Fox",
       ],
     },
@@ -428,7 +641,7 @@ export default function Component() {
       </header>
 
       <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <section id="sobre-mi" className="mb-16">
+        <section id="sobre-mi" className="mb-16 scroll-mt-16 pt-16 -mt-16">
           <h2 className="text-3xl font-bold mb-4">Sobre mí</h2>
           <p className="text-muted-foreground mb-4">
             Desarrollador de software con {yearsOfExperience} años de
@@ -446,7 +659,7 @@ export default function Component() {
           </p>
         </section>
 
-        <section id="experiencia" className="mb-16">
+        <section id="experiencia" className="mb-16 scroll-mt-16 pt-16 -mt-16">
           <h2 className="text-3xl font-bold mb-8 text-center">Experiencia</h2>
           <div className="relative">
             <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-primary"></div>
@@ -511,15 +724,37 @@ export default function Component() {
           </div>
         </section>
 
-        <section id="habilidades" className="mb-16">
-          <h2 className="text-3xl font-bold mb-4">Habilidades</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <section id="habilidades" className="mb-16 scroll-mt-16 pt-16 -mt-16">
+          <h2 className="text-3xl font-bold mb-8 text-center">Habilidades</h2>
+          <div className="space-y-8">
             <div>
-              <h3 className="text-xl font-semibold mb-4">
+              <h3 className="text-2xl font-semibold mb-4">
                 Habilidades técnicas
               </h3>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                {skills.map((skill, index) => (
+              {Object.entries(skillLevels).map(([level, { description, skills }]) => (
+                <div key={level} className="mb-8">
+                  <h4 className="text-xl font-medium mb-2 capitalize">{level}</h4>
+                  <p className="text-muted-foreground mb-4">{description}</p>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                    {skills.map((skill, index) => (
+                      <div
+                        key={index}
+                        className="flex items-center space-x-2 p-2 border rounded-lg"
+                      >
+                        {skill.icon}
+                        <span>{skill.name}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div>
+              <h3 className="text-2xl font-semibold mb-4">
+                Habilidades blandas
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                {softSkills.map((skill, index) => (
                   <div
                     key={index}
                     className="flex items-center space-x-2 p-2 border rounded-lg"
@@ -530,20 +765,10 @@ export default function Component() {
                 ))}
               </div>
             </div>
-            <div>
-              <h3 className="text-xl font-semibold mb-4">Soft skills</h3>
-              <ul className="list-disc list-inside text-muted-foreground">
-                <li>Trabajo en equipo</li>
-                <li>Comunicación efectiva</li>
-                <li>Resolución de problemas</li>
-                <li>Adaptabilidad</li>
-                {/* Agrega más soft skills aquí */}
-              </ul>
-            </div>
           </div>
         </section>
 
-        <section id="proyectos" className="mb-16">
+        <section id="proyectos" className="mb-16 scroll-mt-16 pt-16 -mt-16">
           <h2 className="text-3xl font-bold mb-4">Proyectos</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[1, 2, 3].map((project) => (
@@ -574,14 +799,17 @@ export default function Component() {
           </div>
         </section>
 
-        <section id="contacto" className="mb-16">
+        <section id="contacto" className="mb-16 scroll-mt-16 pt-16 -mt-16">
           <h2 className="text-3xl font-bold mb-8 text-center">Contacto</h2>
           <div className="grid md:grid-cols-2 gap-8">
             <div>
               <h3 className="text-xl font-semibold mb-4">Envíame un mensaje</h3>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-muted-foreground mb-1">
+                  <label
+                    htmlFor="name"
+                    className="block text-sm font-medium text-muted-foreground mb-1"
+                  >
                     Nombre
                   </label>
                   <input
@@ -595,7 +823,10 @@ export default function Component() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-muted-foreground mb-1">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium text-muted-foreground mb-1"
+                  >
                     Correo electrónico
                   </label>
                   <input
@@ -609,7 +840,10 @@ export default function Component() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-muted-foreground mb-1">
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-medium text-muted-foreground mb-1"
+                  >
                     Mensaje
                   </label>
                   <textarea
@@ -628,17 +862,25 @@ export default function Component() {
               </form>
             </div>
             <div>
-              <h3 className="text-xl font-semibold mb-4">Información de contacto</h3>
+              <h3 className="text-xl font-semibold mb-4">
+                Información de contacto
+              </h3>
               <div className="space-y-4">
                 <div className="flex items-center space-x-2">
                   <Mail className="text-primary" />
-                  <a href="mailto:einsen.vasquez.velasquez@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
+                  <a
+                    href="mailto:einsen.vasquez.velasquez@gmail.com"
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                  >
                     einsen.vasquez.velasquez@gmail.com
                   </a>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Phone className="text-primary" />
-                  <a href="tel:+50255353148" className="text-muted-foreground hover:text-primary transition-colors">
+                  <a
+                    href="tel:+50255353148"
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                  >
                     +502 5535-3148
                   </a>
                 </div>
