@@ -652,8 +652,8 @@ export default function Component() {
           <p className="text-muted-foreground mb-4">
             Desarrollador de software con {yearsOfExperience} años de
             experiencia, con la actitud adecuada para adquirir las habilidades
-            necesarias para mejorar constantemente. Hambriento de conocimiento
-            continuo, siempre ansioso por aprender y mejorar. Experiencia con
+            necesarias para mejorar constantemente. Con hambre de conocimiento
+            continuo, siempre dispuesto a aprender y mejorar. Experiencia con
             diferentes stacks tanto en front-end como en back-end.
           </p>
           <p className="text-muted-foreground">
