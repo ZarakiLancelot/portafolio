@@ -86,6 +86,7 @@ import { DiScrum, DiAndroid, DiNginx } from "react-icons/di";
 import { TbSql } from "react-icons/tb";
 import { BiBrain, BiConversation } from "react-icons/bi";
 import { MdOutlineGroupWork, MdOutlineAccountTree } from "react-icons/md";
+import SequentialText from "./components/ui/sequentialText";
 
 export default function Component() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -130,6 +131,8 @@ export default function Component() {
       [name]: value,
     }));
   };
+
+  const sequentialWords = ['Desarrollador Frontend', 'Desarrollador Backend', 'Desarrollador Fullstack'];
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -701,7 +704,7 @@ export default function Component() {
         <section id="sobre-mi" className="mb-16 scroll-mt-16 pt-16 -mt-16">
           <h2 className="text-3xl font-bold mb-4">Sobre mí</h2>
           <p className="text-muted-foreground mb-4">
-            Desarrollador de software con {yearsOfExperience} años de
+          <SequentialText words={sequentialWords} interval={3000} /> con {yearsOfExperience} años de
             experiencia, con la actitud adecuada para adquirir las habilidades
             necesarias para mejorar constantemente. Con hambre de conocimiento
             continuo, siempre dispuesto a aprender y mejorar. Experiencia con
