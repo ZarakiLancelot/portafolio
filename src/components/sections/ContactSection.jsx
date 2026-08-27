@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Mail, Phone } from "lucide-react";
 import { Button } from "../ui/button";
 
@@ -14,6 +14,13 @@ const ContactSection = () => {
     message: "",
   });
   const [status, setStatus] = useState("idle"); // idle | submitting | success | error
+
+  useEffect(() => {
+    if (status !== "success" && status !== "error") return;
+
+    const timer = setTimeout(() => setStatus("idle"), 5000);
+    return () => clearTimeout(timer);
+  }, [status]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
