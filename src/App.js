@@ -89,6 +89,7 @@ import { TbSql } from "react-icons/tb";
 import { BiBrain, BiConversation } from "react-icons/bi";
 import { MdOutlineGroupWork, MdOutlineAccountTree } from "react-icons/md";
 import SequentialText from "./components/ui/sequentialText";
+import LazyVideo from "./components/ui/lazyVideo";
 
 export default function Component() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -254,7 +255,7 @@ export default function Component() {
     {
       name: "FigueVel",
       description: "Sitio web estático para restaurante y/o cafetería.",
-      placeholder: "/assets/vids/figuevel.webm",
+      placeholder: "/assets/vids/figuevel.mp4",
       url: "https://figuevel.netlify.app/",
       code: "https://github.com/ZarakiLancelot/figuevel",
       technologies: "HTML, CSS, JavaScript, Netlify"
@@ -262,7 +263,7 @@ export default function Component() {
     {
       name: "Popochos",
       description: "Sitio web estático para emprendimiento de Repostería.",
-      placeholder: "/assets/vids/popochos.webm",
+      placeholder: "/assets/vids/popochos.mp4",
       url: "https://popochos.shop",
       code: "https://github.com/ZarakiLancelot/popochos",
       technologies: "HTML, CSS, JavaScript"
@@ -270,7 +271,7 @@ export default function Component() {
     {
       name: "Blog - DevChapin",
       description: "Blog personal para compartir conocimiento sobre diferentes tecnologías, pero principalmente de Ruby.",
-      placeholder: "/assets/vids/devchapin.webm",
+      placeholder: "/assets/vids/devchapin.mp4",
       url: "https://developer-chapin.com",
       code: "https://github.com/ZarakiLancelot/blog",
       technologies: "Ruby, HTML, CSS, JavaScript, Bridgetown"
@@ -278,7 +279,7 @@ export default function Component() {
     {
       name: "Blog de Café",
       description: "Sitio web estático sobre un Blog de Café.",
-      placeholder: "/assets/vids/blogcafe.webm",
+      placeholder: "/assets/vids/blogcafe.mp4",
       url: "https://blog-cafe-einsen.netlify.app/",
       code: "",
       technologies: "HTML, CSS, JavaScript"
@@ -286,7 +287,7 @@ export default function Component() {
     {
       name: "Bienes Raíces",
       description: "Sitio web estático para venta y compra de Bienes Raíces.",
-      placeholder: "/assets/vids/bienesraices.webm",
+      placeholder: "/assets/vids/bienesraices.mp4",
       url: "https://bienes-raices-einsen.netlify.app/",
       code: "https://github.com/ZarakiLancelot/bienes-raices-einsen",
       technologies: "HTML, CSS, JavaScript"
@@ -913,13 +914,10 @@ export default function Component() {
             {projects.map((project) => (
               <div key={project.name} className="border rounded-lg overflow-hidden">
                 {project.placeholder.endsWith('.webm') || project.placeholder.endsWith('.mp4') ? (
-                  <video
-                    src={`${project.placeholder}`}
-                    alt={`Proyecto ${project.name}`}
+                  <LazyVideo
+                    src={project.placeholder}
+                    label={`Proyecto ${project.name}`}
                     className="w-full h-48 object-cover"
-                    autoPlay
-                    loop
-                    muted
                   />
                 ) : (
                   <img
