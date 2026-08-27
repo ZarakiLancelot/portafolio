@@ -11,6 +11,13 @@ const LazyVideo = ({ src, className, label }) => {
     const node = videoRef.current;
     if (!node) return;
 
+    // Environments without IntersectionObserver (older browsers, jsdom in
+    // tests) just get the video eagerly instead of crashing.
+    if (typeof IntersectionObserver === 'undefined') {
+      setIsVisible(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
