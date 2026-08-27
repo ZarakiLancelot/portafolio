@@ -2,12 +2,18 @@ import { useState } from "react";
 import { Mail, Phone } from "lucide-react";
 import { Button } from "../ui/button";
 
+const encodeFormData = (data) =>
+  Object.keys(data)
+    .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
+    .join("&");
+
 const ContactSection = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   });
+  const [status, setStatus] = useState("idle"); // idle | submitting | success | error
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -17,12 +23,26 @@ const ContactSection = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Aquí iría la lógica para enviar el formulario
-    console.log("Formulario enviado:", formData);
-    // Resetear el formulario después del envío
-    setFormData({ name: "", email: "", message: "" });
+
+    // Honeypot: si un bot llenó este campo oculto, descartamos en silencio.
+    if (e.target["bot-field"].value) {
+      return;
+    }
+
+    setStatus("submitting");
+    try {
+      await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encodeFormData({ "form-name": "contact", ...formData }),
+      });
+      setStatus("success");
+      setFormData({ name: "", email: "", message: "" });
+    } catch (error) {
+      setStatus("error");
+    }
   };
 
   return (
@@ -31,7 +51,19 @@ const ContactSection = () => {
       <div className="grid md:grid-cols-2 gap-8">
         <div>
           <h3 className="text-xl font-semibold mb-4">Envíame un mensaje</h3>
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form
+            name="contact"
+            onSubmit={handleSubmit}
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
+            className="space-y-4"
+          >
+            <input type="hidden" name="form-name" value="contact" />
+            <p className="hidden">
+              <label>
+                No llenar si eres humano: <input name="bot-field" />
+              </label>
+            </p>
             <div>
               <label
                 htmlFor="name"
@@ -83,9 +115,20 @@ const ContactSection = () => {
                 className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               ></textarea>
             </div>
-            <Button type="submit" className="w-full">
-              Enviar mensaje
+            <Button type="submit" className="w-full" disabled={status === "submitting"}>
+              {status === "submitting" ? "Enviando..." : "Enviar mensaje"}
             </Button>
+            {status === "success" && (
+              <p className="text-sm text-green-600 dark:text-green-400">
+                ¡Mensaje enviado! Te responderé lo antes posible.
+              </p>
+            )}
+            {status === "error" && (
+              <p className="text-sm text-destructive">
+                Hubo un problema al enviar tu mensaje. Intenta de nuevo o escríbeme
+                directamente por correo.
+              </p>
+            )}
           </form>
         </div>
         <div>
