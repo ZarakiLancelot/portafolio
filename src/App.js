@@ -79,6 +79,8 @@ import {
   SiApachekafka,
   SiApachetomcat,
   SiApachenetbeanside,
+  SiCsharp,
+  SiAzuredevops,
 } from "react-icons/si";
 import { RiAngularjsFill } from "react-icons/ri";
 import { GiFox, GiGears } from "react-icons/gi";
@@ -123,6 +125,11 @@ export default function Component() {
   };
 
   const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [expandedCards, setExpandedCards] = useState({});
+
+  const toggleCardExpand = (index) => {
+    setExpandedCards((prev) => ({ ...prev, [index]: !prev[index] }));
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -146,30 +153,20 @@ export default function Component() {
     basico: {
       description: "Conozco los conceptos fundamentales, he realizado proyectos simples, configuraciones sencillas y en algunos casos, aprendiendo de algunas de estas tecnologías.",
       skills: [
-        { name: "AWS", icon: <FaAws className="text-2xl" /> },
         { name: "Figma", icon: <FaFigma className="text-2xl" /> },
         { name: "Grafana", icon: <SiGrafana className="text-2xl" /> },
-        { name: "Kotlin", icon: <SiKotlin className="text-2xl" /> },
         { name: "Visual Basic", icon: <SiVisualbasic className="text-2xl" /> },
-        { name: "React", icon: <FaReact className="text-2xl" /> },
         { name: "Vue", icon: <FaVuejs className="text-2xl" /> },
         { name: "Django", icon: <SiDjango className="text-2xl" /> },
-        { name: "Firebase", icon: <SiFirebase className="text-2xl" /> },
         { name: "UIpath", icon: <SiUipath className="text-2xl" /> },
         { name: "RabbitMQ", icon: <SiRabbitmq className="text-2xl" /> },
         { name: "Selenium", icon: <SiSelenium className="text-2xl" /> },
-        { name: "Kafka", icon: <SiApachekafka className="text-2xl" /> },
         { name: "Sass", icon: <FaSass className="text-2xl" /> },
         { name: "Webpack", icon: <SiWebpack className="text-2xl" /> },
         { name: "Heroku", icon: <SiHeroku className="text-2xl" /> },
         { name: "Netlify", icon: <SiNetlify className="text-2xl" /> },
         { name: "New Relic", icon: <SiNewrelic className="text-2xl" /> },
         { name: "SonarQube", icon: <SiSonarqube className="text-2xl" /> },
-        { name: "Jest", icon: <SiJest className="text-2xl" /> },
-        {
-          name: "SQLServer",
-          icon: <SiMicrosoftsqlserver className="text-2xl" />,
-        },
         { name: "Visual Studio", icon: <SiVisualstudio className="text-2xl" /> },
         { name: "Eclipse IDE", icon: <SiEclipseide className="text-2xl" /> },
         { name: "CircleCI", icon: <SiCircleci className="text-2xl" /> },
@@ -186,29 +183,31 @@ export default function Component() {
     intermedio: {
       description: "Tengo experiencia y puedo trabajar de forma independiente en proyectos de mediana complejidad y un poco más. Así como ser capaz de enseñar a otros.",
       skills: [
-        { name: "Java", icon: <FaJava className="text-2xl" /> },
+        { name: "AWS", icon: <FaAws className="text-2xl" /> },
+        { name: "Kotlin", icon: <SiKotlin className="text-2xl" /> },
+        { name: "Firebase", icon: <SiFirebase className="text-2xl" /> },
+        { name: "Kafka", icon: <SiApachekafka className="text-2xl" /> },
+        { name: "Jest", icon: <SiJest className="text-2xl" /> },
+        {
+          name: "SQLServer",
+          icon: <SiMicrosoftsqlserver className="text-2xl" />,
+        },
         { name: "Spring", icon: <SiSpring className="text-2xl" /> },
-        { name: "JavaScript", icon: <FaJs className="text-2xl" /> },
         { name: "PHP", icon: <SiPhp className="text-2xl" /> },
         { name: "Python", icon: <SiPython className="text-2xl" /> },
         { name: "Flask", icon: <SiFlask className="text-2xl" /> },
         { name: "FastAPI", icon: <SiFastapi className="text-2xl" /> },
         { name: "Laravel", icon: <SiLaravel className="text-2xl" /> },
         { name: "Angular", icon: <FaAngular className="text-2xl" /> },
-        { name: "Node.js", icon: <FaNodeJs className="text-2xl" /> },
         { name: "Docker", icon: <FaDocker className="text-2xl" /> },
-        { name: "Git", icon: <FaGitAlt className="text-2xl" /> },
         { name: "MongoDB", icon: <SiMongodb className="text-2xl" /> },
-        { name: "Express", icon: <SiExpress className="text-2xl" /> },  
-        { name: "TypeScript", icon: <SiTypescript className="text-2xl" /> },      
-        { name: "CSS", icon: <FaCss3Alt className="text-2xl" /> },      
-        { name: "PostgreSQL", icon: <SiPostgresql className="text-2xl" /> },     
-        { name: "MySQL", icon: <SiMysql className="text-2xl" /> },
-        { name: "Oracle", icon: <SiOracle className="text-2xl" /> },     
+        { name: "Express", icon: <SiExpress className="text-2xl" /> },
+        { name: "CSS", icon: <FaCss3Alt className="text-2xl" /> },
+        { name: "PostgreSQL", icon: <SiPostgresql className="text-2xl" /> },
+        { name: "Oracle", icon: <SiOracle className="text-2xl" /> },
         { name: "SQLite", icon: <SiSqlite className="text-2xl" /> },
         { name: "SQL", icon: <TbSql className="text-2xl" /> },
         { name: "MariaDB", icon: <SiMariadb className="text-2xl" /> },
-        { name: "Postman", icon: <SiPostman className="text-2xl" /> },
         { name: "GitHub", icon: <SiGithub className="text-2xl" /> },
         { name: "GitLab", icon: <SiGitlab className="text-2xl" /> },
         { name: "Bitbucket", icon: <SiBitbucket className="text-2xl" /> },
@@ -220,10 +219,18 @@ export default function Component() {
     avanzado: {
       description: "Tengo mucha experiencia y conocimiento de la tecnología, puedo resolver problemas complejos y soy capaz de enseñar a otros.",
       skills: [
+        { name: "React", icon: <FaReact className="text-2xl" /> },
+        { name: "JavaScript", icon: <FaJs className="text-2xl" /> },
+        { name: "TypeScript", icon: <SiTypescript className="text-2xl" /> },
+        { name: "Git", icon: <FaGitAlt className="text-2xl" /> },
         { name: "Ruby", icon: <SiRuby className="text-2xl" /> },
         { name: "Ruby on Rails", icon: <SiRubyonrails className="text-2xl" /> },
         { name: "HTML", icon: <FaHtml5 className="text-2xl" /> },
         { name: "JasperReports", icon: <FaRegFilePdf className="text-2xl" /> },
+        { name: "Java", icon: <FaJava className="text-2xl" /> },
+        { name: "Node.js", icon: <FaNodeJs className="text-2xl" /> },
+        { name: "MySQL", icon: <SiMysql className="text-2xl" /> },
+        { name: "Postman", icon: <SiPostman className="text-2xl" /> },
         {
           name: "Visual Studio Code",
           icon: <SiVisualstudiocode className="text-2xl" />,
@@ -376,6 +383,10 @@ export default function Component() {
       Netbeans: SiApachenetbeanside,
       Nginx: DiNginx,
       Figma: FaFigma,
+      "C#": SiCsharp,
+      "Azure DevOps": SiAzuredevops,
+      SSIS: SiMicrosoftsqlserver,
+      JavaFX: FaJava,
     };
     const IconComponent = iconMap[tech] || FaDatabase;
     return <IconComponent className="text-2xl mr-2" />;
@@ -390,6 +401,28 @@ export default function Component() {
   ];
 
   const experiences = [
+    {
+      company: "Randa Apparel & Accessories",
+      position: "Desarrollador Full Stack",
+      period: "Agosto 2024 - Presente",
+      responsibilities: [
+        "Lideré la creación, pruebas y publicación de una librería interna de componentes UI en React.js alojada en Azure DevOps Artifacts, agilizando el desarrollo frontend en las diferentes divisiones de la empresa",
+        "Desarrollo, mantenimiento y optimización de interfaces de usuario responsivas utilizando la librería centralizada de componentes, asegurando el cumplimiento de los estrictos lineamientos corporativos de diseño UX/UI",
+        "Construcción y mantenimiento de una API central en C# para la gestión de múltiples bases de datos, facilitando el acceso seguro a datos en tiempo real y la consistencia transaccional",
+        "Diseño y optimización de paquetes complejos de SQL Server Integration Services (SSIS) para la manipulación, migración y transformación de datos a gran escala",
+      ],
+      technologies: [
+        "React",
+        "TypeScript",
+        "JavaScript",
+        "SQLServer",
+        "SSIS",
+        "C#",
+        "Azure DevOps",
+        "Docker",
+        "Git",
+      ],
+    },
     {
       company: "Freelance",
       position: "Desarrollador Full Stack",
@@ -433,6 +466,16 @@ export default function Component() {
         "Netlify",
         "Figma",
       ],
+    },
+    {
+      company: "Udemy",
+      position: "Profesor Auxiliar - Curso de Java",
+      period: "2023 - Presente",
+      responsibilities: [
+        "Brindo apoyo y resuelvo dudas de los estudiantes inscritos en el curso de Java, guiándolos en la comprensión de conceptos y en la resolución de ejercicios prácticos",
+        "Acompañamiento continuo a los estudiantes a lo largo del curso, ayudando a mantener su motivación y buen ritmo de aprendizaje",
+      ],
+      technologies: ["Java", "JavaFX", "MySQL", "MariaDB"],
     },
     {
       company: "PAKAI Consultores",
@@ -722,27 +765,27 @@ export default function Component() {
         <section id="experiencia" className="mb-16 scroll-mt-16 pt-16 -mt-16">
           <h2 className="text-3xl font-bold mb-8 text-center">Experiencia</h2>
           <div className="relative">
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-primary"></div>
+            <div className="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-primary"></div>
 
             {experiences.map((exp, index) => (
               <div
                 key={index}
                 className={`mb-8 flex justify-between items-center w-full ${
-                  index % 2 === 0 ? "flex-row-reverse" : "flex-row"
+                  index % 2 === 0 ? "md:flex-row-reverse" : "md:flex-row"
                 }`}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
               >
-                <div className="order-1 w-5/12"></div>
-                <div className="z-20 flex items-center order-1 bg-primary shadow-xl w-8 h-8 rounded-full">
+                <div className="hidden md:block order-1 md:w-5/12"></div>
+                <div className="z-20 flex items-center order-1 bg-primary shadow-xl w-8 h-8 rounded-full shrink-0 mr-4 md:mr-0">
                   <h1 className="mx-auto font-semibold text-lg text-background">
                     {index + 1}
                   </h1>
                 </div>
-                <div className="order-1 bg-card rounded-lg shadow-xl w-5/12 px-6 py-4 relative perspective">
+                <div className="order-1 bg-card rounded-lg shadow-xl flex-1 md:flex-none md:w-5/12 px-6 py-4 relative perspective">
                   <div
                     className={`relative transition-transform duration-500 transform-style-preserve-3d ${
-                      hoveredIndex === index ? "rotate-y-180" : ""
+                      hoveredIndex === index ? "md:rotate-y-180" : ""
                     }`}
                   >
                     <div className="backface-hidden">
@@ -756,12 +799,48 @@ export default function Component() {
                         {exp.period}
                       </p>
                       <ul className="list-disc list-inside text-sm text-muted-foreground">
-                        {exp.responsibilities.map((resp, idx) => (
+                        {exp.responsibilities.slice(0, 2).map((resp, idx) => (
                           <li key={idx}>{resp}</li>
                         ))}
                       </ul>
+                      {exp.responsibilities.length > 2 && (
+                        <ul
+                          className={`list-disc list-inside text-sm text-muted-foreground mt-1 ${
+                            expandedCards[index] ? "block" : "hidden"
+                          } md:block`}
+                        >
+                          {exp.responsibilities.slice(2).map((resp, idx) => (
+                            <li key={idx + 2}>{resp}</li>
+                          ))}
+                        </ul>
+                      )}
+                      {expandedCards[index] && (
+                        <div className="md:hidden mt-4">
+                          <h4 className="font-semibold text-sm text-primary mb-2">
+                            Tecnologías utilizadas
+                          </h4>
+                          <div className="grid grid-cols-2 gap-2">
+                            {exp.technologies.map((tech, idx) => (
+                              <div
+                                key={idx}
+                                className="flex items-center space-x-2 p-2 border rounded-lg text-xs"
+                              >
+                                {getTechIcon(tech)}
+                                <span>{tech}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                      <button
+                        type="button"
+                        onClick={() => toggleCardExpand(index)}
+                        className="md:hidden mt-3 text-primary text-sm font-medium"
+                      >
+                        {expandedCards[index] ? "Ver menos ▲" : "Ver más ▼"}
+                      </button>
                     </div>
-                    <div className="absolute inset-0 backface-hidden rotate-y-180 bg-card rounded-lg shadow-xl px-6 py-4 overflow-y-auto">
+                    <div className="absolute inset-0 backface-hidden rotate-y-180 bg-card rounded-lg shadow-xl px-6 py-4 overflow-y-auto hidden md:block">
                       <h3 className="font-bold text-primary text-xl mb-4">
                         Tecnologías utilizadas
                       </h3>
