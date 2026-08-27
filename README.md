@@ -1,70 +1,66 @@
-# Getting Started with Create React App
+# Portafolio - Edwin Einsen
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Sitio web personal de Edwin Einsen Vásquez Velásquez, Desarrollador Full Stack. Presenta experiencia laboral, habilidades técnicas, proyectos y un formulario de contacto.
 
-## Available Scripts
+🔗 **Demo en vivo:** [edwin-einsen.netlify.app](https://edwin-einsen.netlify.app)
 
-In the project directory, you can run:
+## Secciones
 
-### `npm start`
+- **Sobre mí** — introducción con texto animado de roles (Frontend/Backend/Fullstack) y años de experiencia calculados automáticamente.
+- **Experiencia** — timeline con las posiciones laborales, responsabilidades y tecnologías utilizadas en cada una.
+- **Habilidades** — técnicas (agrupadas por nivel: básico, intermedio, avanzado) y blandas.
+- **Proyectos** — grid de proyectos con preview en imagen/video, enlace al sitio y al repositorio cuando aplica.
+- **Contacto** — formulario y datos de contacto directo.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Incluye modo claro/oscuro (persistido en `localStorage`) y diseño responsive.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Stack
 
-### `npm test`
+- [React 18](https://react.dev/) (bootstrapped con [Create React App](https://github.com/facebook/create-react-app))
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Radix UI](https://www.radix-ui.com/) / patrón de componentes estilo shadcn
+- [lucide-react](https://lucide.dev/) y [react-icons](https://react-icons.github.io/react-icons/) para iconografía
+- [Google Analytics 4](https://analytics.google.com/) para métricas de visitas
+- Desplegado en [Netlify](https://www.netlify.com/)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Empezando
 
-### `npm run build`
+### Requisitos
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Node.js y npm
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Instalación
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+npm install
+```
 
-### `npm run eject`
+### Scripts disponibles
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+npm start      # levanta el servidor de desarrollo en http://localhost:3000
+npm test       # corre los tests
+npm run build  # genera el build de producción en /build
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Estructura del proyecto
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
+public/
+  assets/        # imágenes y videos usados en la sección de proyectos
+src/
+  components/ui/ # componentes reutilizables (Button, SequentialText)
+  lib/           # utilidades
+  App.js         # componente principal con todas las secciones del sitio
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Contacto
 
-## Learn More
+- Email: [einsen.vasquez.velasquez@gmail.com](mailto:einsen.vasquez.velasquez@gmail.com)
+- LinkedIn: [edwin-einsen-vasquez-velasquez](https://linkedin.com/in/edwin-einsen-vasquez-velasquez)
+- GitHub: [ZarakiLancelot](https://github.com/ZarakiLancelot)
+- Twitter/X: [@DevChapin](https://twitter.com/DevChapin)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+© Edwin Einsen Vásquez Velásquez. Todos los derechos reservados.
