@@ -25,7 +25,7 @@ const Header = () => {
   };
 
   return (
-    <header className="sticky top-0 z-10 bg-background border-b">
+    <header className="sticky top-0 z-50 bg-background border-b">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center">
