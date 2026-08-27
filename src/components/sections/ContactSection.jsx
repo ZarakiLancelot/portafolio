@@ -54,6 +54,8 @@ const ContactSection = () => {
           <form
             name="contact"
             onSubmit={handleSubmit}
+            netlify="true"
+            netlify-honeypot="bot-field"
             data-netlify="true"
             data-netlify-honeypot="bot-field"
             className="space-y-4"
