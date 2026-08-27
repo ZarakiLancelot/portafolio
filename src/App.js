@@ -511,7 +511,7 @@ export default function Component() {
     },
     {
       company: "EMPAGUA",
-      position: "Desarrollador Full Stack",
+      position: "Desarrollador Full Stack (Contractor)",
       period: "Julio 2023 - Diciembre 2023",
       responsibilities: [
         "Desarrollo de un módulo para el pago del servicio de agua para los residentes de la ciudad de Guatemala, a través de un quiosco de la Municipalidad",
@@ -564,7 +564,7 @@ export default function Component() {
     },
     {
       company: "TektonLabs",
-      position: "Desarrollador Full Stack",
+      position: "Desarrollador Full Stack (Contractor)",
       period: "Agosto 2022 - Diciembre 2022",
       responsibilities: [
         "Desarrollo e implementación con éxito de un sistema de reservas sólido y robusto para programar citas o eventos con celebridades y oradores de diferentes ámbitos, a través de interfaces fáciles de utilizar y procesos optimizados para una excelente experiencia",
@@ -589,7 +589,7 @@ export default function Component() {
     },
     {
       company: "Agropecuaria Popoyán",
-      position: "Desarrollador y Consultor de Software",
+      position: "Desarrollador y Consultor de Software (Contractor)",
       period: "Mayo 2022 - Septiembre 2022",
       responsibilities: [
         "Implementación del módulo de Private Shops dentro de Magento para tener tiendas privadas con productos génericos",
